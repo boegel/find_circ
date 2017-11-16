@@ -21,7 +21,7 @@ cdr1as_test.bam: bt2_cdr1as_locus.4.bt2 cdr1as_reads.fa
 	@printf "\n>>> aligning example reads\n\n"
 	bowtie2 -p8 --very-sensitive --score-min=C,-15,0 --reorder --mm \
 		-f -U cdr1as_reads.fa -x bt2_cdr1as_locus \
-		2> bt2_firstpass.log | samtools view -hbuS - | samtools sort - cdr1as_test
+		2> bt2_firstpass.log | samtools view -hbuS - | samtools sort - > cdr1as_test
 
 unmapped_cdr1as_test.bam: cdr1as_test.bam
 	@printf "\n>>> fetching the unmapped reads\n\n"
